@@ -50,12 +50,22 @@ function findFriends(friends: Friend[], criterion: (friend: Friend) => boolean) 
     return friends.filter(criterion).map(friend => friend.name);
 }
 
+function addInterest(friend: Friend, interest: string){
+    if (!friend.interests) {
+        friend.interests = [];
+    }
+    if (!friend.interests.includes(interest)) {
+        friend.interests.push(interest);
+    }
+    return friend.interests;
+}
+
 // console.log(findFriends(friends, (friend) => friend.name.startsWith('Pa')));
 // console.log(findFriends(friends, (friend) => friend.age < 35));
 
-console.log(sortColleagues(colleagues.current, (a, b) => (a.contact.extension - b.contact.extension),3));
-console.log(sortColleagues(colleagues.current, (a, b) => (a.name.length - b.name.length),1));
-console.log(sortColleagues(colleagues.current, (a, b) => (a.name.length - b.name.length))); // NEW
+// console.log(sortColleagues(colleagues.current, (a, b) => (a.contact.extension - b.contact.extension),3));
+// console.log(sortColleagues(colleagues.current, (a, b) => (a.name.length - b.name.length),1));
+// console.log(sortColleagues(colleagues.current, (a, b) => (a.name.length - b.name.length))); // NEW
 
 // console.log(highestExtension(colleagues.current));
 
@@ -65,3 +75,5 @@ console.log(sortColleagues(colleagues.current, (a, b) => (a.name.length - b.name
 // Test the addColleague function
 // addColleague(colleagues.current, "Sheild O Connell", "HR", "soc@here.com");
 // console.log(colleagues.current.filter((c) => c.name === "Sheild O Connell"));
+
+console.log(addInterest(friends[1], 'Politics'))
